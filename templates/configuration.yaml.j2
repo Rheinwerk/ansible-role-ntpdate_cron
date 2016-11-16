@@ -1,0 +1,24 @@
+# This is an overlay configration file. It will be merged with the main agent
+# configuration file.
+#
+# See configuration.yaml for details.
+#
+
+# Common
+{% if _instana.config.common is defined %}
+{{ _instana.config.common }}
+{% endif %}
+
+# Per hostgroup
+{% for g in group_names %}
+# Group: {{ g }}
+{% if _instana.config.per_hostgroup is defined and _instana.config.per_hostgroup[g] is defined %}
+{{ _instana.config.per_hostgroup[g] }}
+{% endif %}
+{% endfor %}
+
+# Per host
+{% if _instana.config.per_host is defined and _instana.config.per_host[inventory_hostname] is defined %}
+{{ _instana.config.per_host[inventory_hostname] }}
+{% endif %}
+

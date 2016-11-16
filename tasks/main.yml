@@ -1,0 +1,19 @@
+---
+#
+# tasks file for ansible-role-ntpdate_cron
+#
+
+- name: Apt Update
+  become: yes
+  apt: update_cache=yes
+  when: RW_APT_CACHE_UPDATE is defined
+
+- name: Install ntpdate
+  apt: pkg=rsync state=installed
+
+- name: Create cronjob to update time every hour
+  template: src=etc/cron.hourly/ntpdate.j2 dest=/etc/cron.hourly/ntpdate owner=root group=root mode=0755
+
+- name: Set ntp default servers for ntpdate-debian, too
+  lineinfile: dest=/etc/default/ntpdate regexp='^NTPSERVERS=.*' line='NTPSERVERS="{{ _ntpdate_cron.ntp_servers|join(" ") }}"'
+

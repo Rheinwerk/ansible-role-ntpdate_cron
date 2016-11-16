@@ -1,0 +1,7 @@
+---
+# defaults file for ansible-role-ntpdate_cron
+
+_ntpdate_cron:
+  ntp_servers:
+    - pool.ntp.org
+
