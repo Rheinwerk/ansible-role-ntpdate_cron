@@ -16,4 +16,3 @@
 
 - name: Set ntp default servers for ntpdate-debian, too
   lineinfile: dest=/etc/default/ntpdate regexp='^NTPSERVERS=.*' line='NTPSERVERS="{{ _ntpdate_cron.ntp_servers|join(" ") }}"'
-
