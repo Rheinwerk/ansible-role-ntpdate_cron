@@ -3,7 +3,7 @@ ntpdate cron
 
 This role installs an hourly cronjob for ntpdate.
 
-[![Build Status](https://travis-ci.org/Rheinwerk/ansible-role-ntpdate_cron.svg?branch=master)](https://travis-ci.org/Rheinwerk/ansible-role-ntpdate_cron)
+[![Build Status](https://github.com/Rheinwerk/ansible-role-ntpdate_cron/actions/workflows/ci.yml/badge.svg)](https://github.com/Rheinwerk/ansible-role-ntpdate_cron/actions/workflows/ci.yml)
 
 Requirements
 ------------
